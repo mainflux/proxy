@@ -46,5 +46,3 @@ tags
 # Go tests
 *.test
 
-# Binary
-mainflux-mqtt
