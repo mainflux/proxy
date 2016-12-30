@@ -15,7 +15,6 @@ Change `nginx.conf` to use `www-data` as a user if you are on Debian
 Copy config files:
 ```bash
 sudo cp nginx.conf /etc/nginx/nginx.conf
-sudo cp conf.d/* /etc/nginx/conf.d
 ```
 
 Copy TLS certificate and key:
