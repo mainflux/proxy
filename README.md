@@ -12,7 +12,7 @@ NGINX reverse proxy for Mainflux IoT platform.
 Change `nginx.conf` to use `www-data` as a user if you are on Debian
 (on Alpine Linux which is used for Docker user is `nginx`).
 
-Copy config files:
+Copy config file:
 ```bash
 sudo cp nginx.conf /etc/nginx/nginx.conf
 ```
