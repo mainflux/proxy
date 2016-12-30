@@ -4,6 +4,58 @@
 
 NGINX reverse proxy for Mainflux IoT platform.
 
+## Installation
+
+> *N.B.* Most of the procedures about setting-up TLS in NGINX are taken from
+> [How To Create a Self-Signed SSL Certificate for Nginx in Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-16-04)
+
+Change `nginx.conf` to use `www-data` as a user if you are on Debian
+(on Alpine Linux which is used for Docker user is `nginx`).
+
+Copy config files:
+```bash
+sudo cp nginx.conf /etc/nginx/nginx.conf
+sudo cp conf.d/* /etc/nginx/conf.d
+```
+
+Copy TLS certificate and key:
+```bash
+sudo cp tls/mainflux-selfsigned.crt /etc/ssl/certs/
+sudo cp tls/mainflux-selfsigned.key /etc/ssl/private/
+```
+
+Ensure that you have Diffie-Hellman group: `ls /etc/ssl/certs/dhparam.pem`,
+or crate one:
+```bash
+sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+```
+
+Copy `sites-avalable/mainflux-proxy`:
+```bash
+sudo cp sites-avalable/mainflux-proxy /etc/nginx/sites-available/mainflux-proxy
+```
+
+Now enable it:
+```
+sudo ln -s /etc/nginx/sites-available/mainflux-proxy /etc/nginx/sites-enabled/mainflux-proxy 
+```
+
+Reload nginx config:
+```bash
+sudo service mongodb reload
+```
+
+## Using
+### Curl Testing
+```bash
+curl --cacert tls/mainflux-selfsigned.crt https://localhost:443/devices
+```
+or more verbose and with prett-print:
+```bash
+curl -v -s -i -H "Accept: application/json" -H "Content-Type: application/json" \
+  --cacert tls/mainflux-selfsigned.crt https://localhost:443/devices | json | pygmentize -l json
+```
+
 ### Documentation
 Development documentation can be found on our [Mainflux GitHub Wiki](https://github.com/Mainflux/mainflux/wiki).
 
