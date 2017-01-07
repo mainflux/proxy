@@ -12,33 +12,10 @@ NGINX reverse proxy for Mainflux IoT platform.
 Change `nginx.conf` to use `www-data` as a user if you are on Debian
 (on Alpine Linux which is used for Docker user is `nginx`).
 
-Copy config file:
+Prepare NGINX environment by executing [install-env.sh](https://github.com/mainflux/mainflux-nginx/blob/master/install-env.sh):
 ```bash
-sudo cp nginx.conf /etc/nginx/nginx.conf
+sudo sh install-env.sh
 ```
-
-Copy TLS certificate and key:
-```bash
-sudo cp certs/mainflux-self-signed-server.crt /etc/ssl/certs/
-sudo cp certs/mainflux-self-signed-server.key /etc/ssl/private/
-```
-
-Ensure that you have Diffie-Hellman group: `ls /etc/ssl/certs/dhparam.pem`,
-or crate one:
-```bash
-sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
-```
-
-Copy `sites-avalable/mainflux-proxy`:
-```bash
-sudo cp sites-avalable/mainflux-proxy /etc/nginx/sites-available/mainflux-proxy
-```
-
-Now enable it:
-```
-sudo ln -s /etc/nginx/sites-available/mainflux-proxy /etc/nginx/sites-enabled/mainflux-proxy
-```
-
 Reload nginx config:
 ```bash
 sudo service nginx reload
