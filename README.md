@@ -4,12 +4,12 @@
 
 NGINX reverse proxy for Mainflux IoT platform.
 
-## Installation
+### Installation
 
 > *N.B.* Most of the procedures about setting-up TLS in NGINX are taken from
 > [How To Create a Self-Signed SSL Certificate for Nginx in Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-16-04)
 
-Change `nginx.conf` to use `www-data` as a user if you are on Debian
+> Change `nginx.conf` to use `www-data` as a user if you are on Debian
 (on Alpine Linux which is used for Docker user is `nginx`).
 
 Prepare NGINX environment by executing [install-env.sh](https://github.com/mainflux/mainflux-nginx/blob/master/install-env.sh):
@@ -21,8 +21,8 @@ Reload nginx config:
 sudo service nginx reload
 ```
 
-## Using
-### Curl Testing
+### Using
+#### Curl Testing
 ```bash
 curl --cacert tls/mainflux-selfsigned.crt https://localhost:443/devices
 ```
