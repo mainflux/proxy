@@ -1,12 +1,10 @@
-## Micro CBOR
-[RFC 7049 Concise Binary Object Representation](http://cbor.io/) specification implementation in pure C. Targets constrained embedded devices.
-
-Protocol specification can be found [here](https://tools.ietf.org/html/rfc7049).
+## Mainflux HTTP MbedTLS Client
+HTTP client that makes secure encrypted connection with Mainflux server over TLS using embedded mbedtls open-source library on the client side.
 
 ## Install
 ```bash
 # Clone the repo
-git clone https://github.com/projectiota/ucbor && cd ucbor
+git clone https://github.com/mainflux/mainflux-nginx && cd mainflux-nginx/examples/client-mbedtls
 make
 ```
 
