@@ -60,11 +60,13 @@ int main( void )
 #include "mbedtls/error.h"
 #include "mbedtls/certs.h"
 
+#include "cert.h"
+
 #include <string.h>
 
-#define SERVER_PORT "4433"
+#define SERVER_PORT "443"
 #define SERVER_NAME "localhost"
-#define GET_REQUEST "GET / HTTP/1.0\r\n\r\n"
+#define GET_REQUEST "GET /status HTTP/1.0\r\n\r\n"
 
 #define DEBUG_LEVEL 1
 
@@ -125,8 +127,12 @@ int main( void )
     mbedtls_printf( "  . Loading the CA root certificate ..." );
     fflush( stdout );
 
-    ret = mbedtls_x509_crt_parse( &cacert, (const unsigned char *) mbedtls_test_cas_pem,
+    /** ret = mbedtls_x509_crt_parse( &cacert, (const unsigned char *) mbedtls_test_cas_pem,
                           mbedtls_test_cas_pem_len );
+	*/
+	
+    ret = mbedtls_x509_crt_parse( &cacert, (const unsigned char *) server_root_cert, strlen(server_root_cert)+1 );
+
     if( ret < 0 )
     {
         mbedtls_printf( " failed\n  !  mbedtls_x509_crt_parse returned -0x%x\n\n", -ret );

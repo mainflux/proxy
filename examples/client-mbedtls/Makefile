@@ -44,3 +44,4 @@ mbedtls:
 .PHONY : clean
 clean :
 	rm -rf $(TARGET) $(OBJDIR)
+	make -C $(LIBDIR)/mbedtls clean
