@@ -19,8 +19,8 @@ sudo cp nginx.conf /etc/nginx/nginx.conf
 
 Copy TLS certificate and key:
 ```bash
-sudo cp tls/mainflux-selfsigned.crt /etc/ssl/certs/
-sudo cp tls/mainflux-selfsigned.key /etc/ssl/private/
+sudo cp certs/mainflux-self-signed-server.crt /etc/ssl/certs/
+sudo cp certs/mainflux-self-signed-server.key /etc/ssl/private/
 ```
 
 Ensure that you have Diffie-Hellman group: `ls /etc/ssl/certs/dhparam.pem`,
@@ -36,12 +36,12 @@ sudo cp sites-avalable/mainflux-proxy /etc/nginx/sites-available/mainflux-proxy
 
 Now enable it:
 ```
-sudo ln -s /etc/nginx/sites-available/mainflux-proxy /etc/nginx/sites-enabled/mainflux-proxy 
+sudo ln -s /etc/nginx/sites-available/mainflux-proxy /etc/nginx/sites-enabled/mainflux-proxy
 ```
 
 Reload nginx config:
 ```bash
-sudo service mongodb reload
+sudo service nginx reload
 ```
 
 ## Using

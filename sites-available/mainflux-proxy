@@ -46,10 +46,10 @@ server {
 	#
 	# include snippets/snakeoil.conf;
 	
-    	include snippets/mainflux-self-signed.conf;
-    	include snippets/mainflux-ssl-params.conf;
+    include snippets/mainflux-ssl-certs.conf;
+    include snippets/mainflux-ssl-params.conf;
 
-    	include snippets/mainflux-auth-req.conf;
+    include snippets/mainflux-auth-req.conf;
 
 	server_name _;
 }
