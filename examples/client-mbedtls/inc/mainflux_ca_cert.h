@@ -14,7 +14,7 @@
  1 s:/C=US/O=Let's Encrypt/CN=Let's Encrypt Authority X3
    i:/O=Digital Signature Trust Co./CN=DST Root CA X3
  */
-const char *server_root_cert = "-----BEGIN CERTIFICATE-----\r\n"
+const char *mainflux_ca_cert = "-----BEGIN CERTIFICATE-----\r\n"
 "MIIDhDCCAmygAwIBAgIJAPOWQ/k/52/dMA0GCSqGSIb3DQEBDQUAMFcxEjAQBgNV\r\n"
 "BAMMCWxvY2FsaG9zdDERMA8GA1UECgwITWFpbmZsdXgxDDAKBgNVBAsMA0lvVDEg\r\n"
 "MB4GCSqGSIb3DQEJARYRaW5mb0BtYWluZmx1eC5jb20wHhcNMTcwMTA3MDA0MzE4\r\n"

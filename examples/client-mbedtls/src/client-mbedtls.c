@@ -60,7 +60,7 @@ int main( void )
 #include "mbedtls/error.h"
 #include "mbedtls/certs.h"
 
-#include "cert.h"
+#include "mainflux_ca_cert.h"
 
 #include <string.h>
 
@@ -127,11 +127,8 @@ int main( void )
     mbedtls_printf( "  . Loading the CA root certificate ..." );
     fflush( stdout );
 
-    /** ret = mbedtls_x509_crt_parse( &cacert, (const unsigned char *) mbedtls_test_cas_pem,
-                          mbedtls_test_cas_pem_len );
-	*/
-	
-    ret = mbedtls_x509_crt_parse( &cacert, (const unsigned char *) server_root_cert, strlen(server_root_cert)+1 );
+    ret = mbedtls_x509_crt_parse( &cacert, (const unsigned char *) mainflux_ca_cert,
+			strlen(mainflux_ca_cert)+1 );
 
     if( ret < 0 )
     {
@@ -186,7 +183,13 @@ int main( void )
         goto exit;
     }
 
-    if( ( ret = mbedtls_ssl_set_hostname( &ssl, "mbed TLS Server 1" ) ) != 0 )
+	/**
+	 * Set the hostname to check against the received server certificate.
+	 * It sets the ServerName TLS extension too, if the extension is enabled. (client-side only)
+	 * More info: https://github.com/ARMmbed/mbedtls/issues/466
+	 */
+
+    if( ( ret = mbedtls_ssl_set_hostname( &ssl, SERVER_NAME ) ) != 0 )
     {
         mbedtls_printf( " failed\n  ! mbedtls_ssl_set_hostname returned %d\n\n", ret );
         goto exit;

@@ -46,3 +46,7 @@ tags
 # Go tests
 *.test
 
+# obj
+*.o
+obj
+

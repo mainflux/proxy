@@ -39,7 +39,7 @@ $(OBJ): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -I$(INCDIR) $(LIBINCDIRS:%=-I%) -c -o $@ $<
 
 mbedtls:
-	make -C $(LIBDIR)/mbedtls lib
+	make -C $(LIBDIR)/mbedtls -j 16 lib
  
 .PHONY : clean
 clean :
