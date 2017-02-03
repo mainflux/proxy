@@ -17,12 +17,12 @@ For client side certificates:
 generate-CA.sh client mainflux-client
 ```
 
-Then you can SUB with something like:
+Then you can  MQTT SUB with something like:
 ```
 mosquitto_sub -t mainflux/channels/a57cc963-c152-4fd2-9398-59495916babe -p 8883 -v --cafile ./certs/ca.crt
 ```
 
-or PUB with something like:
+or MQTT PUB with something like:
 ```
 mosquitto_pub -t mainflux/channels/a57cc963-c152-4fd2-9398-59495916babe -m '[{"bn":"AAAAA","bt":1.276020076001e+09, "bu":"A","bver":5, "n":"voltage","u":"V","v":120.1}, {"n":"current","t":-5,"v":1.2}, {"n":"current","t":-4,"v":1.3}]' -p 8883 --cafile ./certs/ca.crt
 ```
