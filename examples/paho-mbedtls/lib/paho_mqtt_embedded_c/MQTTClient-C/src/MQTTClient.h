@@ -19,7 +19,7 @@
 
 #include "MQTTPacket.h"
 #include "stdio.h"
-#include "" //Platform specific implementation header file
+#include "MQTTLinux.h" //Platform specific implementation header file
 
 #define MAX_PACKET_ID 65535
 #define MAX_MESSAGE_HANDLERS 5
