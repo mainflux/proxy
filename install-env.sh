@@ -15,5 +15,5 @@ mkdir -p /etc/nginx/snippets
 cp snippets/* /etc/nginx/snippets/
 
 # Enable proxy as default:
-rm /etc/nginx/conf.d/default.conf
+mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.bak
 cp conf.d/mainflux-proxy.conf /etc/nginx/conf.d/mainflux-proxy.conf
