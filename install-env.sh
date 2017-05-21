@@ -14,6 +14,6 @@ openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 mkdir -p /etc/nginx/snippets
 cp snippets/* /etc/nginx/snippets/
 
-# Copy `sites-avalable/mainflux-proxy`:
+# Enable proxy as default:
 rm /etc/nginx/conf.d/default.conf
 cp conf.d/mainflux-proxy.conf /etc/nginx/conf.d/mainflux-proxy.conf
