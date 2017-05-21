@@ -4,8 +4,8 @@
 FROM nginx:alpine
 MAINTAINER Mainflux
 
-ENV MFX_CORE_HOST mainflux-core
-ENV MFX_CORE_PORT 7070
+ENV MFX_MANAGER_HOST mainflux-manager
+ENV MFX_MANAGER_PORT 7070
 
 ENV MFX_AUTH_HOST mainflux-auth
 ENV MFX_AUTH_PORT 8180
@@ -26,6 +26,6 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 ###
 # Run main command with dockerize
 ###
-CMD dockerize -wait tcp://$MFX_CORE_HOST:$MFX_CORE_PORT \
+CMD dockerize -wait tcp://$MFX_MANAGER_HOST:$MFX_MANAGER_PORT \
 				-wait tcp://$MFX_AUTH_HOST:$MFX_AUTH_PORT \
 				-timeout 10s nginx -g "daemon off;"
