@@ -11,10 +11,9 @@ cp certs/mainflux-server.key /etc/ssl/private/
 openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 
 # Copy nginx config snippets:
+mkdir -p /etc/nginx/snippets
 cp snippets/* /etc/nginx/snippets/
 
-# Copy `sites-avalable/mainflux-proxy`:
-cp sites-available/mainflux-proxy /etc/nginx/sites-available/mainflux-proxy
-
-# Enable it:
-ln -s /etc/nginx/sites-available/mainflux-proxy /etc/nginx/sites-enabled/mainflux-proxy
+# Enable proxy as default:
+mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.bak
+cp conf.d/mainflux-proxy.conf /etc/nginx/conf.d/mainflux-proxy.conf
