@@ -17,5 +17,5 @@ wget https://github.com/containous/traefik/releases/download/v1.4.0-rc2/traefik_
 ```
 ## Run
 ```
-sudo ./traefik --configFile=traefik.toml
+traefik --configFile=traefik.toml
 ```
