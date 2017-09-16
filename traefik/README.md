@@ -13,9 +13,6 @@ docker run -d -p 8080:8080 -p 80:80 \
 
 ### Local Machine
 ```
-wget https://github.com/containous/traefik/releases/download/v1.4.0-rc2/traefik_linux-amd64
-```
-## Run
-```
-traefik --configFile=traefik.toml
+wget -O traefik https://github.com/containous/traefik/releases/download/v1.4.0-rc2/traefik_linux-amd64
+./traefik --configFile=traefik.toml
 ```
